@@ -19,3 +19,13 @@ app.include_router(session.router)
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the login system!"}
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # frontend dev URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
